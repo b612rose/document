@@ -1,15 +1,32 @@
+![](http://kimstar.kr/blog/wp-content/uploads/2017/05/aws.png)
+
 # AWS 기본
-- AWS : IT 인프라, 전체 가용량을 무제한으로 인식
+- 개요
+    - 전체 가용량을 무제한으로 인식
+    - IaaS, PaaS, SaaS 를 아우르는 70여개 이상의 서비스 제공
+    - 탄력성 : 수요에 맞는 최적의 자원을 실시간 배치 가능
+    - 모든 요청이 API로 만들어짐. (RESTful API 기반으로 WEB, CLI, SDK 사용가능)
 - 주요 서비스
     - Compute : EC2(가상서버), ELB(로드밸랜서)
+    ![](http://kimstar.kr/blog/wp-content/uploads/2017/04/aws_1.png)
+
     - Storage : S3(객체스토리지), CloudFront(CDN)
+    ![](http://kimstar.kr/blog/wp-content/uploads/2017/04/aws_2.png)
+
     - Database : RDS(RDBMS 관리형 서비스), DynamoDB(NoSQL 관리형서비스)
+    ![](http://kimstar.kr/blog/wp-content/uploads/2017/04/aws_3.png)
+
     - Network : VPD(논리적 네트워크 서비스), Route53(DNS)
+    ![](http://kimstar.kr/blog/wp-content/uploads/2017/04/aws_4.png)
+
 - 물리 인프라
     - AZ : 데이터센터의 집합, 물리적으로 독립적, 2개이상 사용시 가용성 증가
     - Region : 두개 이상의 AZ 집합, 도시이름으로 명명
     - Edge : 속도에 민감한 서비스(CloudFront, Route53)용 서버팜, 공항코드로 명명
+    ![](http://kimstar.kr/blog/wp-content/uploads/2017/04/aws_7.png)
+
 - 과금방식 : Compute(EC2), Stroage(S3, EBS), Data Transfer
+
 
 # IAM
 ## IAM
@@ -138,10 +155,10 @@
 - Network ACL : VPC Subnet의 방화벽 (In/Out 접근제어)
 - Route Table : 목적지 지정 - IGW(인터넷 연결구간), VPG(사설네트워크 연결), ...
 
-| Dest         | Target  |설명                                                          |
-|--------------|---------|--------------------------------------------------------------|
-| 10.0.0.0/16  | local	 | 10.0.[0~255].[0~255], 10.0.*.*는 더 구체적인 경로인 이것을 사용 |
-| 0.0.0.0/0    | IGW     | 이전에 지정되지 않은 모든 IP 주소값 (Anywhere)                  |
+| Dest         | Target  |설명                                                    |
+|--------------|---------|--------------------------------------------------------|
+| 10.0.0.0/16  | local	 | 10.0.[0~255].[0~255], 10.0.?.?는 더 구체적인 이것을 사용 |
+| 0.0.0.0/0    | IGW     | 이전에 지정되지 않은 모든 IP 주소값 (Anywhere)            |
 
 ## VPC Subnet 구분
 - Public Subnet : Route Table에 IGW로 가는 Routing 있음
@@ -330,11 +347,3 @@ Client <--------> LoadBalancer <--------> node1 (11.0.0.1)
             - L7은 WAF 연동하여 보호
 
     - 통계 제공 : 요청수, 사용자 device 등
-
-
-
-
-
-
-
-
